@@ -19,4 +19,5 @@ print(f"[4] + DNA String + Reverse Compliment:\n5' {DNAStr} 3'")
 print(f"   {''.join(['|' for c in range(len(DNAStr))])}")
 print(f"3' {reverse_comp(DNAStr)[::-1]} 5'\n")
 
-print(reverse_comp(DNAStr))
+print(f'[5] + GC Content: {gc_content(DNAStr)}%\n')
+print(f'[6] + GC Content in Subsection k=5: {gc_content_sub(DNAStr, k=5)}\n')
