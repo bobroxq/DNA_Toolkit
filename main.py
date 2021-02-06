@@ -21,3 +21,7 @@ print(f"3' {reverse_comp(DNAStr)[::-1]} 5'\n")
 
 print(f'[5] + GC Content: {gc_content(DNAStr)}%\n')
 print(f'[6] + GC Content in Subsection k=5: {gc_content_sub(DNAStr, k=5)}\n')
+
+print(f'[7] + Aminoacid Sequence from DNA: {translate_seq(DNAStr, 0)}\n')
+
+print(f'[8] + Codon Frequency (L): {codon_usage(DNAStr, "L")}\n')

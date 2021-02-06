@@ -1,4 +1,5 @@
 from structures import *
+from collections import Counter
 
 def validateSeq(dna_seq):
     """Checks the sequence to ensure it is a DNA string. Invalidates any sequence containing elements other than A, T, G, and/or C"""
@@ -44,3 +45,18 @@ def gc_content_sub(dna_seq, k=20):
         subseq = dna_seq[i:i + k]
         res.append(gc_content(subseq))
     return res
+
+def translate_seq(dna_seq, init_pos=0):
+    return [DNA_Codons[dna_seq[pos:pos +3]] for pos in range(init_pos, len(dna_seq) - 2, 3)]
+
+def codon_usage(dna_seq, aminoacid):
+    tmplist = []
+    for i in range(0, len(dna_seq) - 2, 3):
+        if DNA_Codons[dna_seq[i:i +3]] == aminoacid:
+            tmplist.append(dna_seq[i:i+3])
+
+    freqDict = dict(Counter(tmplist))
+    totalweight = sum(freqDict.values())
+    for dna_seq in freqDict:
+        freqDict[dna_seq] = round(freqDict[dna_seq] / totalweight, 2)
+    return freqDict
