@@ -60,3 +60,53 @@ def codon_usage(dna_seq, aminoacid):
     for dna_seq in freqDict:
         freqDict[dna_seq] = round(freqDict[dna_seq] / totalweight, 2)
     return freqDict
+
+def gen_reading_frames(dna_seq):
+    """Generate the six reading frames of a DNA sequence, includng reverse compliment"""
+    frames = []
+    frames.append(translate_seq(dna_seq, 0))
+    frames.append(translate_seq(dna_seq, 1))
+    frames.append(translate_seq(dna_seq, 2))
+    frames.append(translate_seq(reverse_comp(dna_seq), 0))
+    frames.append(translate_seq(reverse_comp(dna_seq), 1))
+    frames.append(translate_seq(reverse_comp(dna_seq), 2))
+    return frames
+
+
+def proteins_from_rf(aa_seq):
+    """Search sequence for start and stop codons and compute all possible proteins in an amino acid sequence to return a list of possible proteins"""
+    current_prot = []
+    proteins = []
+    for aa in aa_seq:
+        if aa == "_":
+            #  STOP accumulating amino acids if STOP codon is found
+            if current_prot:
+                for p in current_prot:
+                    proteins.append(p)
+                current_prot = []
+        else:
+            #  START accumulating amino acids if START codon found
+            if aa == 'M':
+                current_prot.append("")
+            for i in range(len(current_prot)):
+                current_prot[i] += aa
+    return proteins
+
+def all_proteins(dna_seq, startReadPos=0, endReadPos=0, ordered=False):
+    """Compute all possible proteins for all possible reading frames"""
+    """Protein search DB"""
+    """API can be used to pull protein info"""
+    if endReadPos > startReadPos:
+        rfs = gen_reading_frames(dna_seq[startReadPos: endReadPos])
+    else:
+        rfs = gen_reading_frames(dna_seq)
+    
+    res = []
+    for rf in rfs:
+        prots = proteins_from_rf(rf)
+        for p in prots:
+            res.append(p)
+    
+    if ordered:
+        return sorted(res, key=len, reverse=True)
+    return res
