@@ -1,7 +1,7 @@
-Nucleotides = ["A", "C", "G", "T"]
-DNA_ReverseComp = {"A": "T", "C": "G", "G": "C", "T": "A"}
+NUCLEOTIDES = ["A", "C", "G", "T"]
+DNA_REVERSECOMP = {"A": "T", "C": "G", "G": "C", "T": "A"}
 
-DNA_Codons = {
+DNA_CODONS = {
     # 'M' - START, '_' - STOP
     "GCT": "A", "GCC": "A", "GCA": "A", "GCG": "A",
     "TGT": "C", "TGC": "C",
