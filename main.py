@@ -3,13 +3,14 @@ import dna_toolkit
 from utilities import colored
 from structures import NUCLEOTIDES
 
-def main():
-    #  Creating a random DNA sequence for testing
-    rndDNAStr = ''.join([random.choice(NUCLEOTIDES)
-                        for nuc in range(50)])
+#  Creating a random DNA sequence for testing
+rndDNAStr = ''.join([random.choice(NUCLEOTIDES)
+                    for nuc in range(50)])
 
-    DNAStr = dna_toolkit.validateSeq(rndDNAStr)
+DNAStr = dna_toolkit.validateSeq(rndDNAStr)
 
+def main(DNAStr):
+    
     print(f'\nSequence:\n{colored(DNAStr)}\n')
     print(f'[1] + Sequence Length: {len(DNAStr)}\n')
 
