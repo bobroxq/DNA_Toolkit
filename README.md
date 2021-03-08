@@ -7,6 +7,8 @@
 ```
 pip install -i https://test.pypi.org/simple/ DNA-Toolkit
 ```
+=======
+## Original project by rebelCoder: https://www.youtube.com/playlist?list=PLpSOMAcxEB_jUKMvdl8rHqNiZXFIrtd5G
 
 ### Run
 
