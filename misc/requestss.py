@@ -7,10 +7,13 @@ r = requests.get(genome_sequencer)
 
 data = r.json()["data"]
 
+
 def alex_genomes():
     for element in data:
         print(element["attributes"]["species"])
         genome_seq = element["attributes"]["sequence"]
         main(genome_seq)
 
-alex_genomes()
+
+if __name__ == "__main__":
+    alex_genomes()

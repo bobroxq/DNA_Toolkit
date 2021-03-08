@@ -1,5 +1,5 @@
 from collections import Counter
-from structures import NUCLEOTIDES, DNA_CODONS, DNA_REVERSECOMP
+from dna_toolkit.structures import NUCLEOTIDES, DNA_CODONS, DNA_REVERSECOMP
 
 
 def validateSeq(dna_seq):
